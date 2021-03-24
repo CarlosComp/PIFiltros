@@ -124,9 +124,8 @@ public class PiFiltro {
                 r = Math.min(255, Math.max(0, r));
                 g = Math.min(255, Math.max(0, g));
                 b = Math.min(255, Math.max(0, b));
-                MatrizRed2[x][y]=r;
-                MatrizGreen2[x][y]=g;
-                MatrizBlue2[x][y]=b;
+                MatrizRed2[x][y]=255-r;
+                MatrizGreen2[x][y]=255-g;
             }
         }
         BufferedImage aux = new BufferedImage(Imagem1.getWidth(), Imagem1.getHeight(), BufferedImage.TYPE_INT_ARGB);
