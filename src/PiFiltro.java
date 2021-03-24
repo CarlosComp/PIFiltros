@@ -112,12 +112,12 @@ public class PiFiltro {
                 int Blue21 = MatrizBlue[x+1][y];
                 int Blue22 = MatrizBlue[x+1][y+1];
 
-                int r = (+Red00 + Red01 + Red02 +
-                        Red10 - (8*Red11) + Red12 +
-                        Red20 +   Red21 + Red22);
-                int g = (+Green00 + Green01 + Green02 +
-                        Green10 - (8*Green11) + Green12 +
-                        Green20 +   Green21 + Green22);
+                int r = (-Red00 - Red01 - Red02 -
+                        Red10 + (8*Red11) - Red12 -
+                        Red20 -   Red21 - Red22);
+                int g = (-Green00 - Green01 - Green02 -
+                        Green10 + (8*Green11) - Green12 -
+                        Green20 -   Green21 - Green22);
                 int b = (-Blue00 - Blue01 - Blue02 -
                         Blue10 + (8*Blue11) - Blue12 -
                         Blue20 -   Blue21 - Blue22);
