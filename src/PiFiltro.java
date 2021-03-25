@@ -193,6 +193,7 @@ public class PiFiltro {
         laplace1[2][1] = -1;
         laplace1[2][2] = -1;
 
+
         int [][] laplace2 = new int [3][3];
         laplace2[0][0] = 1;
         laplace2[0][1] = 1;
@@ -279,10 +280,39 @@ public class PiFiltro {
         Cria_Imagem_Alterada(Image_To_Matriz(aux), "laplaciano-4");
     }
 
+    public void Media(BufferedImage Imagem1) throws IOException {
+        int largura = Imagem1.getWidth();
+        int altura = Imagem1.getHeight();
+
+        BufferedImage aux = new BufferedImage(largura, altura,
+                BufferedImage.TYPE_INT_ARGB);
+        int p1, p2, p3, p4, p5, p6, p7, p8, p9, p;
+        for (int x = 1; x < altura - 1; x++) {
+            for (int y = 1; y < largura - 1; y++) {
+                p1 = Imagem1.getRGB(x-1,y-1);
+                p2 = Imagem1.getRGB(x-1,y);
+                p3 = Imagem1.getRGB(x-1,y+1);
+                p4 = Imagem1.getRGB(x,y-1);
+                p5 = Imagem1.getRGB(x,y);
+                p6 = Imagem1.getRGB(x,y+1);
+                p7 = Imagem1.getRGB(x+1,y-1);
+                p8 = Imagem1.getRGB(x+1,y);
+                p9 = Imagem1.getRGB(x+1,y+1);
+                p = (p1+p2+p3+p4+p5+p6+p7+p8+p9)/9;
+                p = Math.min(255, Math.max(0, p));
+                aux.setRGB(x, y, p);
+            }
+        }
+
+        Cria_Imagem_Alterada(Image_To_Matriz(aux), "media");
+    }
+
+
     public static void main(String[] args) throws IOException {
         PiFiltro Executar = new PiFiltro();
         Executar.laplaciano(Executar.abreImagem());
         Executar.Sobel(Executar.abreImagem());
+        Executar.Media(Executar.abreImagem());
     }
 
 }
